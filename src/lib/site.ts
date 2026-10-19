@@ -36,7 +36,7 @@ export const SITE = {
   facebookReviewsUrl: "https://www.facebook.com/infascape/reviews",
   // Paste the public Google Business Profile link (Share > Copy link in Google
   // Maps). It is added to schema sameAs and the reviews links once set.
-  googleBusinessProfileUrl: "",
+  googleBusinessProfileUrl: "https://maps.google.com/?cid=8822740014982497524",
 
   logo: "/assets/infascape-logo-secondary.jpg",
   ogImage: "/assets/hero-landing.jpg",
