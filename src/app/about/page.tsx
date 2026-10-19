@@ -1,36 +1,28 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import AboutContent from "@/components/about/AboutContent";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema, founderSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "About Infascape | 20+ Years Landscaping Experience Sheffield",
+export const metadata: Metadata = pageMetadata({
+  title: "About Infascape | Rob France, 20+ Years in the Trades | Sheffield",
   description:
-    "Infascape Ltd - Sheffield's engineered landscaping specialists with over 20 years combined industry experience. Quality over quantity, built to last.",
-  openGraph: {
-    title: "About Infascape | 20+ Years Landscaping Experience Sheffield",
-    description:
-      "Infascape Ltd - Sheffield's engineered landscaping specialists with over 20 years combined industry experience. Quality over quantity, built to last.",
-    url: "https://infascape.co.uk/about",
-    type: "website",
-    images: [
-      {
-        url: "/assets/hero-landing.jpg",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Infascape | 20+ Years Landscaping Experience Sheffield",
-    description:
-      "Sheffield's engineered landscaping specialists with over 20 years combined industry experience.",
-    images: ["/assets/hero-landing.jpg"],
-  },
-};
+    "Infascape Ltd is run by Rob France, with 20+ years in the trades including a tarmac company, new builds and landscaping. Engineered landscaping in Sheffield since 2020.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <main className="pt-16 sm:pt-18">
+      <JsonLd
+        data={[
+          founderSchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
+      />
       <AboutContent />
     </main>
   );

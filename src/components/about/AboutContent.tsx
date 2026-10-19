@@ -29,7 +29,7 @@ const howWeWork = [
   {
     title: "During The Project",
     content:
-      'Progress updates throughout, especially on larger jobs. We explain the process as we go — why we\'re doing what we\'re doing. If something\'s not right, it gets redone. You\'ll never hear "that\'ll do" on our sites.',
+      'Our own crew on site, with regular site visits from Rob and progress updates throughout. We explain the process as we go — why we\'re doing what we\'re doing. If something\'s not right, it gets redone. You\'ll never hear "that\'ll do" on our sites.',
   },
   {
     title: "Our Standards",
@@ -188,21 +188,29 @@ const AboutContent = () => {
       </section>
 
       {/* Section 4 — About the Team */}
-      <section className="section-padding bg-section-alt">
+      <section id="rob-france" className="section-padding bg-section-alt scroll-mt-24">
         <div className="container-narrow mx-auto max-w-3xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground mb-6">
-              Experience &amp; Expertise
+              Who You&apos;ll Deal With
             </h2>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-6">
+              Infascape is run by Rob France. Rob has worked in the trades for
+              over 20 years: building sites, new builds, a tarmac company, and
+              landscaping and joinery. He started his own business in 2020 and
+              founded Infascape Ltd in 2022.
+            </p>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              With over 20 years of combined industry experience, we&apos;ve seen
-              what works, what fails, and why corners get cut — which is exactly
-              why we don&apos;t cut them. We&apos;ve completed hundreds of projects across
-              Sheffield, from small garden borders to full driveway
-              installations. Every job is approached with the same methodical
-              attention to detail, regardless of size. Our reputation is built
-              on work that lasts a decade, not work that needs callbacks in
-              three years.
+              Working for other firms is where Rob saw what fails and why
+              corners get cut, which is exactly why we don&apos;t cut them.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mt-6">
+              You deal with Rob from your first enquiry, through the site visit
+              and quote, to handover. The work is carried out by our own
+              directly employed crew, and Rob visits site regularly throughout
+              the job. Every project, from garden borders to full driveways,
+              gets the same methodical attention to detail, and is built to
+              last a decade, not to need callbacks in three years.
             </p>
           </motion.div>
         </div>

@@ -4,6 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 interface ServiceSectionProps {
   heading: string;
@@ -11,9 +14,11 @@ interface ServiceSectionProps {
   images: string[];
   imageAlts: string[];
   reverse?: boolean;
+  href?: string;
+  linkLabel?: string;
 }
 
-const ServiceSection = ({ heading, content, images, imageAlts, reverse = false }: ServiceSectionProps) => {
+const ServiceSection = ({ heading, content, images, imageAlts, reverse = false, href, linkLabel }: ServiceSectionProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
@@ -74,11 +79,21 @@ const ServiceSection = ({ heading, content, images, imageAlts, reverse = false }
                 {paragraph}
               </p>
             ))}
-            <a href="https://tally.so/r/rjPLEL" target="_blank" rel="noopener noreferrer">
+            {href && (
+              <Link
+                href={href}
+                className="inline-flex items-center gap-1.5 font-semibold text-highlight hover:gap-2.5 transition-all"
+              >
+                {linkLabel ?? "Full details"} <ArrowRight size={16} />
+              </Link>
+            )}
+            <div>
+            <a href={SITE.quoteUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="default" size="lg" className="mt-2 font-heading font-bold">
                 Request a Quote
               </Button>
             </a>
+            </div>
           </motion.div>
         </div>
       </div>

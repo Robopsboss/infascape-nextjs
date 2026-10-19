@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Star } from "lucide-react";
+import { Facebook, Mail, Phone, ThumbsUp } from "lucide-react";
+import { SITE } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
 const fadeUp = {
@@ -47,11 +48,36 @@ const ContactContent = () => {
                 <p className="text-muted-foreground max-w-md mx-auto mb-8 text-base sm:text-lg leading-relaxed">
                   Fill out our project enquiry form and we&apos;ll get back to you within 24 hours.
                 </p>
-                <a href="https://tally.so/r/rjPLEL" target="_blank" rel="noopener noreferrer">
+                <a href={SITE.quoteUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="font-heading font-bold text-base px-10 py-6 text-lg">
                     Request a Quote
                   </Button>
                 </a>
+                <div className="mt-10 pt-8 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                  <a
+                    href={`tel:${SITE.phone}`}
+                    className="flex items-center gap-3 rounded-lg border border-border p-4 hover:border-highlight/40 transition-colors"
+                  >
+                    <Phone className="w-5 h-5 text-highlight shrink-0" />
+                    <span>
+                      <span className="block text-xs text-muted-foreground">Call</span>
+                      <span className="block font-semibold text-foreground">{SITE.phoneDisplay}</span>
+                    </span>
+                  </a>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="flex items-center gap-3 rounded-lg border border-border p-4 hover:border-highlight/40 transition-colors"
+                  >
+                    <Mail className="w-5 h-5 text-highlight shrink-0" />
+                    <span>
+                      <span className="block text-xs text-muted-foreground">Email</span>
+                      <span className="block font-semibold text-foreground break-all">{SITE.email}</span>
+                    </span>
+                  </a>
+                </div>
+                <p className="mt-6 text-sm text-muted-foreground">
+                  Covering {SITE.areasText}.
+                </p>
               </div>
             </motion.div>
 
@@ -65,28 +91,20 @@ const ContactContent = () => {
                   What Our Customers Say
                 </h2>
 
-                {/* Rating */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="flex">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 fill-highlight text-highlight"
-                      />
-                    ))}
-                  </div>
+                  <ThumbsUp className="w-5 h-5 text-highlight" />
                   <span className="text-sm font-semibold text-foreground">
-                    5.0
+                    100% recommend on Facebook
                   </span>
                 </div>
 
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Rated 5 out of 5 on Facebook. Every review reflects the
-                  quality and care we put into each project.
+                  Every one of our Facebook reviewers recommends us. Read
+                  what they say about the work and how we ran the job.
                 </p>
 
                 <a
-                  href="https://www.facebook.com/infascape/reviews"
+                  href={SITE.facebookReviewsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-highlight hover:underline"

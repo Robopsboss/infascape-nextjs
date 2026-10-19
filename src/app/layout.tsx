@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE } from "@/lib/site";
+import { businessSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -19,7 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://infascape.co.uk"),
+  metadataBase: new URL(SITE.url),
   title: "Infascape Ltd | Engineered Landscaping Sheffield",
   description:
     "Sheffield's engineered landscaping specialists. Tarmac driveways, porcelain paving, artificial grass & fencing built to last 10+ years.",
@@ -31,8 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${dmSans.variable}`}>
+    <html lang="en-GB" className={`${plusJakarta.variable} ${dmSans.variable}`}>
       <body className="antialiased">
+        <JsonLd data={[businessSchema, websiteSchema]} />
         <Navbar />
         {children}
         <Footer />
