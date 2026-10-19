@@ -29,7 +29,7 @@ const howWeWork = [
   {
     title: "During The Project",
     content:
-      'Progress updates throughout, especially on larger jobs. We explain the process as we go — why we\'re doing what we\'re doing. If something\'s not right, it gets redone. You\'ll never hear "that\'ll do" on our sites.',
+      'Our own crew on site, with regular site visits from Rob and progress updates throughout. We explain the process as we go — why we\'re doing what we\'re doing. If something\'s not right, it gets redone. You\'ll never hear "that\'ll do" on our sites.',
   },
   {
     title: "Our Standards",
@@ -202,11 +202,15 @@ const AboutContent = () => {
             </p>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               Working for other firms is where Rob saw what fails and why
-              corners get cut, which is exactly why we don&apos;t cut them. You
-              deal with Rob from the first visit to the handover. Every job,
-              from garden borders to full driveways, gets the same methodical
-              attention to detail, and is built to last a decade, not to need
-              callbacks in three years.
+              corners get cut, which is exactly why we don&apos;t cut them.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mt-6">
+              You deal with Rob from your first enquiry, through the site visit
+              and quote, to handover. The work is carried out by our own
+              directly employed crew, and Rob visits site regularly throughout
+              the job. Every project, from garden borders to full driveways,
+              gets the same methodical attention to detail, and is built to
+              last a decade, not to need callbacks in three years.
             </p>
           </motion.div>
         </div>
