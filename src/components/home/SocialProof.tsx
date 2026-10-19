@@ -8,17 +8,17 @@ const reviews = [
   {
     name: "Donna Louise Swift",
     date: "18/12/2025",
-    text: "Has my drive done by Rob and his team and the workmanship...",
+    text: "Has my drive done by Rob and his team and the workmanship…",
   },
   {
     name: "Louise Delibal",
     date: "15/10/2025",
-    text: "Rob and his team rebuilt our garden following previously po...",
+    text: "Rob and his team rebuilt our garden following previously…",
   },
   {
     name: "Jenny Hills",
     date: "14/09/2025",
-    text: "We had Rob and the team to redo our driveway this week: it...",
+    text: "We had Rob and the team to redo our driveway this week…",
   },
 ];
 
@@ -71,7 +71,7 @@ const SocialProof = () => {
               </div>
 
               {/* Review text */}
-              <p className="text-sm text-foreground leading-relaxed mb-2 line-clamp-1">
+              <p className="text-sm text-foreground leading-relaxed mb-2">
                 &quot;{review.text}&quot;
               </p>
               <a

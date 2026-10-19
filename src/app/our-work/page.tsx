@@ -1,33 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import OurWorkHeader from "@/components/our-work/OurWorkHeader";
 import OurWorkGallery from "@/components/our-work/OurWorkGallery";
 
-export const metadata: Metadata = {
-  title: "Landscaping Portfolio Sheffield | Completed Projects | Infascape",
+export const metadata: Metadata = pageMetadata({
+  title: "Landscaping Projects Sheffield | Our Work | Infascape",
   description:
-    "Browse our portfolio of completed landscaping projects across Sheffield. Real work, real results. Driveways, patios, artificial grass & fencing.",
-  openGraph: {
-    title: "Landscaping Portfolio Sheffield | Infascape",
-    description:
-      "Browse our portfolio of completed landscaping projects across Sheffield. Real work, real results.",
-    url: "https://infascape.co.uk/our-work",
-    type: "website",
-    images: [
-      {
-        url: "/assets/hero-landing.jpg",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Landscaping Portfolio Sheffield | Infascape",
-    description:
-      "Browse our portfolio of completed landscaping projects across Sheffield.",
-    images: ["/assets/hero-landing.jpg"],
-  },
-};
+    "Completed driveways, porcelain patios, artificial grass, fencing and composite decking across Sheffield. Real jobs, photographed by us.",
+  path: "/our-work",
+});
 
 export default function OurWorkPage() {
   return (

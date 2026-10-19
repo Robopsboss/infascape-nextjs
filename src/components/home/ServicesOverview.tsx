@@ -4,33 +4,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { SERVICES } from "@/lib/services";
 
-const services = [
-  {
-    image: "/assets/service-tarmac.jpg",
-    title: "Tarmac & Driveways",
-    alt: "Tarmac driveway installation Sheffield",
-    description: "Properly calculated tonnage, correct MOT depths, and professional finishes built to handle daily use.",
-  },
-  {
-    image: "/assets/service-paving.jpg",
-    title: "Porcelain Paving & Patios",
-    alt: "Porcelain paving patio Sheffield",
-    description: "Full sub-base preparation, proper drainage, and precision jointing for a patio that lasts.",
-  },
-  {
-    image: "/assets/service-grass.jpg",
-    title: "Artificial Grass",
-    alt: "Artificial grass installation Sheffield",
-    description: "Quality materials on a properly prepared base — no puddles, no peeling, no regrets.",
-  },
-  {
-    image: "/assets/service-fencing.jpg",
-    title: "Fencing & Garden Borders",
-    alt: "Sleeper wall and fencing Sheffield",
-    description: "Treated timber, proper foundations, and finishing that withstands years of weathering.",
-  },
-];
+const services = SERVICES.map((s) => ({
+  slug: s.slug,
+  image: s.image,
+  title: s.name,
+  alt: s.imageAlt,
+  rate: s.price.rate,
+}));
 
 const ServicesOverview = () => {
   return (
@@ -51,7 +33,7 @@ const ServicesOverview = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -61,7 +43,7 @@ const ServicesOverview = () => {
               transition={{ duration: 0.45, delay: i * 0.1 }}
             >
               <Link
-                href="/services"
+                href={`/services/${service.slug}`}
                 className="group block bg-card rounded-lg overflow-hidden border border-border hover:border-highlight/30 transition-colors"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -69,7 +51,7 @@ const ServicesOverview = () => {
                     src={service.image}
                     alt={service.alt}
                     fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -78,10 +60,10 @@ const ServicesOverview = () => {
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    {service.description}
+                    Guide price: {service.rate}
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-highlight group-hover:gap-2 transition-all">
-                    Learn More <ArrowRight size={14} />
+                    Prices &amp; details <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>

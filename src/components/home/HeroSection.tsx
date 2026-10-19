@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SITE } from "@/lib/site";
 
 const HeroSection = () => {
   return (
@@ -28,7 +30,10 @@ const HeroSection = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-2xl"
         >
-           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] text-primary-foreground mb-6">
+          <p className="text-sm font-semibold uppercase tracking-wider text-highlight mb-4">
+            Landscapers &amp; driveway installers in Sheffield
+          </p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] text-primary-foreground mb-6">
             Transform Your Outdoor Space With{" "}
             <span className="text-highlight">Engineering, Not Guesswork.</span>
           </h1>
@@ -38,14 +43,18 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <a href="https://tally.so/r/rjPLEL" target="_blank" rel="noopener noreferrer">
+            <a href={SITE.quoteUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="secondary" size="lg" className="font-heading font-bold text-base px-8">
                 Request a Quote
               </Button>
             </a>
-            <p className="text-sm text-primary-foreground/50 self-center">
-              Sheffield&apos;s engineered landscaping specialists
-            </p>
+            <a
+              href={`tel:${SITE.phone}`}
+              className="inline-flex items-center gap-2 sm:self-center text-base font-semibold text-primary-foreground hover:text-highlight transition-colors"
+            >
+              <Phone size={18} />
+              {SITE.phoneDisplay}
+            </a>
           </div>
         </motion.div>
       </div>

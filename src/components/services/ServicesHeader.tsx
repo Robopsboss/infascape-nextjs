@@ -12,7 +12,7 @@ const ServicesHeader = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Services
+          Landscaping Services in Sheffield
         </motion.h1>
         <motion.p
           className="text-primary-foreground/70 max-w-xl mx-auto text-base sm:text-lg"
