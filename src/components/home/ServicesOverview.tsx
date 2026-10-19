@@ -11,7 +11,7 @@ const services = SERVICES.map((s) => ({
   image: s.image,
   title: s.name,
   alt: s.imageAlt,
-  rate: s.price.rate,
+  description: s.summary,
 }));
 
 const ServicesOverview = () => {
@@ -60,10 +60,10 @@ const ServicesOverview = () => {
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    Guide price: {service.rate}
+                    {service.description}
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-highlight group-hover:gap-2 transition-all">
-                    Prices &amp; details <ArrowRight size={14} />
+                    Full details <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>

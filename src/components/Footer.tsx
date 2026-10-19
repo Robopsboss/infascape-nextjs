@@ -6,7 +6,6 @@ import { SERVICES } from "@/lib/services";
 const pages = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
-  { label: "Pricing", path: "/pricing" },
   { label: "Our Work", path: "/our-work" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
@@ -85,7 +84,7 @@ const Footer = () => {
             <p className="mt-4 text-sm text-primary-foreground/40">
               {SITE.legalName}
               <br />
-              Covering {SITE.areasServed.join(" and ")}
+              Covering {SITE.areasText}
             </p>
           </div>
         </div>

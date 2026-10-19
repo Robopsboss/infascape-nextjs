@@ -1,24 +1,16 @@
 /**
  * Service page content. One entry = one page at /services/<slug>.
- * Prices live in the `price` block of each service and feed the service page,
- * the pricing page and the schema, so update them in one place.
+ * Worked price examples go in `examples` for each service; they show on the
+ * service page as soon as one is added.
  */
 
 export type FAQ = { q: string; a: string };
 
-export type PriceGuide = {
-  /** Headline rate, e.g. "£100–£140 per m²" */
-  rate: string;
-  /** Typical project wording, e.g. "A 40–60m² driveway: £5,000–£8,000" */
-  typical: string;
-  /** Numeric range for schema (typical project, GBP) */
-  low: number;
-  high: number;
-  /** Extra rows shown on the pricing page */
-  rows?: { label: string; price: string }[];
-  /** What pushes the price up or down */
-  drivers: string[];
-};
+/**
+ * A real priced job, shown on the service page once added.
+ * e.g. { title: "50m² tarmac driveway, Chapeltown", detail: "Full dig-out, ...", price: "£X" }
+ */
+export type WorkedExample = { title: string; detail: string; price: string };
 
 export type Service = {
   slug: string;
@@ -28,6 +20,7 @@ export type Service = {
   metaDescription: string;
   h1: string;
   answer: string; // answer-first intro paragraph
+  summary: string; // one line for homepage cards
   image: string;
   imageAlt: string;
   gallery: { src: string; alt: string }[];
@@ -35,21 +28,25 @@ export type Service = {
   process: { title: string; detail: string }[];
   whyCheapFails: { heading: string; body: string[] };
   duration: string;
-  price: PriceGuide;
+  /** What changes the cost of this job */
+  costFactors: string[];
+  /** Worked examples of real jobs and prices. Empty until Rob supplies them. */
+  examples: WorkedExample[];
   faqs: FAQ[];
 };
 
 export const SERVICES: Service[] = [
   {
     slug: "tarmac-driveways",
+    summary: "Properly calculated tonnage, correct MOT depths, and professional finishes built to handle daily use.",
     name: "Tarmac Driveways",
     serviceType: "Tarmac driveway installation",
     metaTitle: "Tarmac Driveways Sheffield | Prices & Process | Infascape",
     metaDescription:
-      "Tarmac driveway installers in Sheffield. 200mm MOT sub-base, binder and surface course laid to calculated tonnage. Guide price £100–£140 per m². Request a quote.",
+      "Tarmac driveway installers in Sheffield. 200mm MOT sub-base, binder and surface course laid to calculated tonnage. Request a quote.",
     h1: "Tarmac Driveways in Sheffield",
     answer:
-      "Infascape installs tarmac driveways across Sheffield on a full 200mm compacted MOT Type 1 sub-base, with a binder course and a surface course laid to calculated tonnage. A new tarmac driveway with full dig-out typically costs £100–£140 per m², so a 40–60m² drive usually comes in between £5,000 and £8,000.",
+      "Infascape installs tarmac driveways across Sheffield and surrounding areas on a full 200mm compacted MOT Type 1 sub-base, with a binder course and a surface course laid to calculated tonnage.",
     image: "/assets/service-tarmac.jpg",
     imageAlt: "Tarmac driveway installed by Infascape in Sheffield",
     gallery: [
@@ -81,25 +78,15 @@ export const SERVICES: Service[] = [
       ],
     },
     duration: "A typical 40–60m² driveway takes 3–5 working days, weather permitting.",
-    price: {
-      rate: "£100–£140 per m²",
-      typical: "A 40–60m² driveway: £5,000–£8,000",
-      low: 5000,
-      high: 8000,
-      rows: [
-        { label: "New tarmac driveway, full dig-out and 200mm sub-base", price: "£100–£140 per m²" },
-        { label: "Resurfacing over a sound existing base", price: "£55–£75 per m²" },
-        { label: "Block paving and cobble driveways", price: "Quoted per job" },
-      ],
-      drivers: [
-        "How much needs digging out and taking away",
-        "Access for the grab lorry and plant",
-        "Length of edging and any steps or levels",
-        "Drainage needed to meet planning rules",
-      ],
-    },
+    costFactors: [
+      "How much needs digging out and taking away",
+      "Access for the grab lorry and plant",
+      "Length of edging and any steps or levels",
+      "Drainage needed to meet planning rules",
+    ],
+    examples: [],
     faqs: [
-      { q: "How much does a tarmac driveway cost in Sheffield?", a: "A new tarmac driveway with full dig-out and a 200mm sub-base is typically £100–£140 per m². Most 40–60m² driveways cost £5,000–£8,000. Resurfacing over a sound existing base is cheaper, typically £55–£75 per m²." },
+      { q: "How much does a tarmac driveway cost in Sheffield?", a: "Every driveway is priced from a site visit, because size, access for the grab lorry, how much needs digging out and the drainage needed all change the cost. You get a written quote that shows what is being built, not just a total. Most of our projects fall between £3,000 and £15,000+." },
       { q: "How deep should a driveway sub-base be?", a: "We lay 200mm of compacted MOT Type 1 on every new driveway. Thinner bases are the main reason driveways rut and sink within a couple of years." },
       { q: "Do I need planning permission for a tarmac driveway?", a: "For a front garden over 5m², planning permission is usually needed if rainwater runs off onto the road. It is not needed if the water drains to a lawn, border or soakaway on your property. We design the falls and drainage so your driveway meets this." },
       { q: "How long does a tarmac driveway last?", a: "A tarmac driveway built on a proper, well-compacted base should last 10+ years. One laid on a thin or poorly compacted base can fail in two or three." },
@@ -108,14 +95,15 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "porcelain-patios",
+    summary: "Full sub-base preparation, proper drainage, and precision jointing for a patio that lasts.",
     name: "Porcelain Patios",
     serviceType: "Porcelain paving and patio installation",
     metaTitle: "Porcelain Patios Sheffield | Prices & Process | Infascape",
     metaDescription:
-      "Porcelain patio installers in Sheffield. Full sub-base, proper falls and drainage, precision jointing. Guide price £150–£200 per m² fitted. Request a quote.",
+      "Porcelain patio installers in Sheffield. Full sub-base, proper falls and drainage, precision jointing. Request a quote.",
     h1: "Porcelain Patios in Sheffield",
     answer:
-      "Infascape lays porcelain patios across Sheffield on a fully excavated, compacted sub-base with designed falls and drainage, bedded and jointed so slabs don't move or hold water. A fitted porcelain patio typically costs £150–£200 per m², so a 25–35m² patio usually comes in between £4,500 and £7,000.",
+      "Infascape lays porcelain patios across Sheffield and surrounding areas on a fully excavated, compacted sub-base with designed falls and drainage, bedded and jointed so slabs don't move or hold water.",
     image: "/assets/service-paving.jpg",
     imageAlt: "Porcelain patio laid by Infascape in Sheffield",
     gallery: [
@@ -147,20 +135,15 @@ export const SERVICES: Service[] = [
       ],
     },
     duration: "A typical 25–35m² patio takes 4–6 working days.",
-    price: {
-      rate: "£150–£200 per m²",
-      typical: "A 25–35m² patio: £4,500–£7,000",
-      low: 4500,
-      high: 7000,
-      drivers: [
-        "Slab choice (porcelain prices vary widely)",
-        "Number of cuts, curves and steps",
-        "Depth of dig and amount of waste",
-        "Drainage needed near the house",
-      ],
-    },
+    costFactors: [
+      "Slab choice (porcelain prices vary widely)",
+      "Number of cuts, curves and steps",
+      "Depth of dig and amount of waste",
+      "Drainage needed near the house",
+    ],
+    examples: [],
     faqs: [
-      { q: "How much does a porcelain patio cost in Sheffield?", a: "A fitted porcelain patio is typically £150–£200 per m², including excavation, sub-base, laying and jointing. A 25–35m² patio is usually £4,500–£7,000. The slab you choose is the biggest variable." },
+      { q: "How much does a porcelain patio cost in Sheffield?", a: "It depends on size, the slab you choose, the depth of dig, cuts and steps, and drainage near the house. We price every patio from a site visit with a written quote that lists the build-up underneath. Most of our projects fall between £3,000 and £15,000+." },
       { q: "Why do some patio quotes come in much cheaper?", a: "Usually because the sub-base is thin or missing, slabs are laid on dots of mortar rather than a full bed, or the falls aren't designed. Those patios look fine on day one and start rocking or holding water within a few years." },
       { q: "Is porcelain better than sandstone?", a: "Porcelain is denser, more stain-resistant and needs less maintenance. It must be primed and fully bedded, because mortar doesn't grip it like natural stone. Sandstone is softer and needs sealing." },
       { q: "Will my patio drain properly?", a: "Yes. We set a fall away from the house and add channel drains or a soakaway where the ground won't take the water." },
@@ -169,14 +152,15 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "artificial-grass",
+    summary: "Quality materials on a properly prepared base — no puddles, no peeling, no regrets.",
     name: "Artificial Grass",
     serviceType: "Artificial grass installation",
     metaTitle: "Artificial Grass Installers Sheffield | Prices | Infascape",
     metaDescription:
-      "Artificial grass installation in Sheffield on a properly drained, compacted base. No puddles, no lifting edges. Guide price £70–£100 per m². Request a quote.",
+      "Artificial grass installation in Sheffield on a properly drained, compacted base. No puddles, no lifting edges. Request a quote.",
     h1: "Artificial Grass Installation in Sheffield",
     answer:
-      "Infascape installs artificial grass across Sheffield on a dug-out, compacted, free-draining base with fixed edges, so it doesn't puddle, ripple or lift. A fitted artificial lawn typically costs £70–£100 per m², so a 30–50m² garden usually comes in between £2,500 and £4,500.",
+      "Infascape installs artificial grass across Sheffield and surrounding areas on a dug-out, compacted, free-draining base with fixed edges, so it doesn't puddle, ripple or lift.",
     image: "/assets/service-grass.jpg",
     imageAlt: "Artificial grass installed by Infascape in Sheffield",
     gallery: [
@@ -207,20 +191,15 @@ export const SERVICES: Service[] = [
       ],
     },
     duration: "Most gardens take 1–3 working days.",
-    price: {
-      rate: "£70–£100 per m²",
-      typical: "A 30–50m² lawn: £2,500–£4,500",
-      low: 2500,
-      high: 4500,
-      drivers: [
-        "Grass quality and pile height",
-        "Depth of dig and soil to remove",
-        "Access (barrow-only access takes longer)",
-        "Edging type and length",
-      ],
-    },
+    costFactors: [
+      "Grass quality and pile height",
+      "Depth of dig and soil to remove",
+      "Access (barrow-only access takes longer)",
+      "Edging type and length",
+    ],
+    examples: [],
     faqs: [
-      { q: "How much does artificial grass cost to install in Sheffield?", a: "Fitted on a proper base, artificial grass is typically £70–£100 per m². A 30–50m² lawn usually costs £2,500–£4,500, depending on the grass, dig-out and access." },
+      { q: "How much does artificial grass cost to install in Sheffield?", a: "It depends on the area, the grass you choose, how much soil needs digging out and access. We price every job from a site visit with a written quote." },
       { q: "Why does artificial grass puddle?", a: "Because it was laid on soil or sand with no draining stone base. Water has nowhere to go. We dig out and lay a compacted, free-draining base." },
       { q: "How long does artificial grass last?", a: "Good-quality grass on a proper base should look good for 10+ years. Cheap grass on a poor base flattens, fades and lifts much sooner." },
       { q: "Is artificial grass OK for dogs?", a: "Yes, as long as the base drains well. A free-draining base and regular rinsing stop smells building up." },
@@ -229,14 +208,15 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "fencing-sleeper-walls",
+    summary: "Treated timber, proper foundations, and finishing that withstands years of weathering.",
     name: "Fencing & Sleeper Walls",
     serviceType: "Fencing, sleeper walls and garden borders",
     metaTitle: "Fencing & Sleeper Walls Sheffield | Prices | Infascape",
     metaDescription:
-      "Fencing, slatted screens, sleeper walls and garden borders in Sheffield. Posts set in concrete, treated timber, proper foundations. Guide prices inside. Request a quote.",
+      "Fencing, slatted screens, sleeper walls and garden borders in Sheffield. Posts set in concrete, treated timber, proper foundations. Request a quote.",
     h1: "Fencing and Sleeper Walls in Sheffield",
     answer:
-      "Infascape builds fencing, slatted screens, sleeper walls and garden borders across Sheffield with posts set in concrete, treated timber and proper foundations, so they don't lean, rot or blow over. Fencing typically costs £100–£250 per metre depending on style, and sleeper walls £200–£400 per metre depending on height.",
+      "Infascape builds fencing, slatted screens, sleeper walls and garden borders across Sheffield and surrounding areas with posts set in concrete, treated timber and proper foundations, so they don't lean, rot or blow over.",
     image: "/assets/service-fencing.jpg",
     imageAlt: "Fencing and sleeper wall built by Infascape in Sheffield",
     gallery: [
@@ -266,26 +246,15 @@ export const SERVICES: Service[] = [
       ],
     },
     duration: "A typical 20m run of fencing takes 2–3 working days.",
-    price: {
-      rate: "£100–£250 per metre",
-      typical: "A 20m run of fencing: £2,500–£4,500",
-      low: 2500,
-      high: 4500,
-      rows: [
-        { label: "Close-board fencing, concrete posts and gravel boards", price: "£100–£150 per metre" },
-        { label: "Slatted / horizontal screen fencing", price: "£150–£250 per metre" },
-        { label: "Sleeper walls and raised borders", price: "£200–£400 per metre" },
-      ],
-      drivers: [
-        "Fence style and height",
-        "Removal of the old fence",
-        "Ground conditions for posts",
-        "Height and length of sleeper walls",
-      ],
-    },
+    costFactors: [
+      "Fence style and height",
+      "Removal of the old fence",
+      "Ground conditions for posts",
+      "Height and length of sleeper walls",
+    ],
+    examples: [],
     faqs: [
-      { q: "How much does a new fence cost in Sheffield?", a: "Close-board fencing with concrete posts and gravel boards is typically £100–£150 per metre fitted. Slatted screen fencing is typically £150–£250 per metre. A 20m run usually costs £2,500–£4,500." },
-      { q: "How much does a sleeper wall cost?", a: "Typically £200–£400 per metre, depending on the height and whether it is retaining soil." },
+      { q: "How much does a new fence cost in Sheffield?", a: "It depends on the length, height and style of fence, removing the old one and the ground conditions for posts. We price every job from a site visit with a written quote." },
       { q: "Why do fences blow over?", a: "Usually shallow posts, posts not set in concrete, or timber sitting on wet ground and rotting at the base. We concrete every post and use gravel boards." },
       { q: "Do sleeper walls rot?", a: "Untreated or poorly drained sleepers can rot in a few years. We use treated sleepers on a proper footing so water isn't sitting against them." },
       { q: "Do you take the old fence away?", a: "Yes. Removal and disposal of the old fence is included in the quote." },
@@ -293,14 +262,15 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "composite-decking",
+    summary: "Level, ventilated frames on solid foundations, so your deck doesn't bounce, sag or drop.",
     name: "Composite Decking",
     serviceType: "Composite decking installation",
     metaTitle: "Composite Decking Sheffield | Prices & Process | Infascape",
     metaDescription:
-      "Composite decking installers in Sheffield. Level, ventilated frames on solid foundations, raised decks and decking borders. Guide price £180–£260 per m². Request a quote.",
+      "Composite decking installers in Sheffield. Level, ventilated frames on solid foundations, raised decks and decking borders. Request a quote.",
     h1: "Composite Decking in Sheffield",
     answer:
-      "Infascape builds composite decking across Sheffield on a level, ventilated sub-frame set on solid foundations, including raised decks, decking borders and outdoor kitchen areas. Fitted composite decking typically costs £180–£260 per m², so a 15–25m² deck usually comes in between £3,500 and £6,000.",
+      "Infascape builds composite decking across Sheffield and surrounding areas on a level, ventilated sub-frame set on solid foundations, including raised decks, decking borders and outdoor kitchen areas.",
     image: "/assets/gallery/grey-composite-decking-1.jpg",
     imageAlt: "Grey composite decking built by Infascape in Sheffield",
     gallery: [
@@ -331,20 +301,15 @@ export const SERVICES: Service[] = [
       ],
     },
     duration: "A typical 15–25m² deck takes 3–5 working days.",
-    price: {
-      rate: "£180–£260 per m²",
-      typical: "A 15–25m² deck: £3,500–£6,000",
-      low: 3500,
-      high: 6000,
-      drivers: [
-        "Board range and colour",
-        "Height (raised decks need more frame and balustrade)",
-        "Steps, curves and borders",
-        "Ground conditions",
-      ],
-    },
+    costFactors: [
+      "Board range and colour",
+      "Height (raised decks need more frame and balustrade)",
+      "Steps, curves and borders",
+      "Ground conditions",
+    ],
+    examples: [],
     faqs: [
-      { q: "How much does composite decking cost in Sheffield?", a: "Fitted composite decking is typically £180–£260 per m², including frame and foundations. A 15–25m² deck is usually £3,500–£6,000. Raised decks with balustrades cost more." },
+      { q: "How much does composite decking cost in Sheffield?", a: "It depends on size, height, the board range, steps and borders, and ground conditions. Raised decks need more frame and balustrading. We price every deck from a site visit with a written quote." },
       { q: "Is composite decking better than timber?", a: "Composite won't rot, splinter or need staining, and keeps its colour longer. It costs more up front, but needs far less maintenance." },
       { q: "Does composite decking get slippery?", a: "Good composite boards have a textured, grip-rated surface. Keeping the deck clean of moss and leaves keeps it safe in wet weather." },
       { q: "How long does composite decking last?", a: "The boards typically last 20+ years. The life of the deck depends on the sub-frame, which is why we build the frame properly." },
@@ -355,13 +320,3 @@ export const SERVICES: Service[] = [
 
 export const getService = (slug: string) =>
   SERVICES.find((s) => s.slug === slug);
-
-/** General pricing FAQs, used on the pricing page. */
-export const PRICING_FAQS: FAQ[] = [
-  { q: "Do you charge for a quote?", a: "No. We visit, measure and give you a written quote that shows what is being built and how." },
-  { q: "What size of project do you take on?", a: "Most of our projects are between £3,000 and £15,000+. We also take smaller jobs when they fit our schedule." },
-  { q: "Why are your prices higher than some quotes I've had?", a: "Because of what goes underneath: full sub-base depths, compaction in layers, designed drainage and calculated quantities. Cheaper quotes usually save money there, which is why those jobs fail in two or three years." },
-  { q: "Is VAT included?", a: "Your written quote states the final price, including any VAT." },
-  { q: "Do I pay a deposit?", a: "Payment terms are set out on your written quote before any work is booked." },
-  { q: "Will the price change once work starts?", a: "Only if you ask for changes, or if something genuinely unforeseeable is found below ground. If that happens, we stop and talk to you before doing anything extra." },
-];

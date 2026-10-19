@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 
-/** Closing call to action used on the service and pricing pages. */
+/** Closing call to action used on the service pages. */
 export default function PageCTA({
   heading = "Ready to Discuss Your Project?",
   body = "Tell us what you're after and we'll come out, measure up and give you a written quote that shows exactly what's being built.",

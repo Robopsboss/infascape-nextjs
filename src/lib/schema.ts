@@ -110,11 +110,4 @@ export const serviceSchema = (s: Service) => ({
   image: absoluteUrl(s.image),
   provider: { "@id": BUSINESS_ID },
   areaServed,
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "GBP",
-    lowPrice: s.price.low,
-    highPrice: s.price.high,
-    description: s.price.typical,
-  },
 });

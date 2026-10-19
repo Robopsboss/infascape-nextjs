@@ -24,9 +24,9 @@ export const SITE = {
   addressRegion: "South Yorkshire",
   addressCountry: "GB",
 
-  // Areas named on the site and in schema. Add the towns and districts you
-  // actually want work in; each one becomes a local relevance signal.
+  // Areas used in schema (areaServed) and wording used on the page.
   areasServed: ["Sheffield", "South Yorkshire"],
+  areasText: "Sheffield and surrounding areas",
 
   founder: "Rob France",
   foundingDate: "2022",
@@ -34,8 +34,7 @@ export const SITE = {
   quoteUrl: "https://tally.so/r/rjPLEL",
   facebookUrl: "https://www.facebook.com/infascape",
   facebookReviewsUrl: "https://www.facebook.com/infascape/reviews",
-  // Paste the public Google Business Profile link (Share > Copy link in Google
-  // Maps). It is added to schema sameAs and the reviews links once set.
+  // Permanent Google Maps link to the Business Profile (used in schema sameAs).
   googleBusinessProfileUrl: "https://maps.google.com/?cid=8822740014982497524",
 
   logo: "/assets/infascape-logo-secondary.jpg",

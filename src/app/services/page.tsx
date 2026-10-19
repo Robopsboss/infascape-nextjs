@@ -162,7 +162,7 @@ export default function ServicesPage() {
             imageAlts={service.imageAlts}
             reverse={i % 2 !== 0}
             href={`/services/${service.slug}`}
-            linkLabel={`${sectionLabels[i]}: prices, process & FAQs`}
+            linkLabel={`${sectionLabels[i]}: process & FAQs`}
           />
         </div>
       ))}

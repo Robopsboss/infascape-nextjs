@@ -76,7 +76,7 @@ const ContactContent = () => {
                   </a>
                 </div>
                 <p className="mt-6 text-sm text-muted-foreground">
-                  Covering {SITE.areasServed.join(" and ")}.
+                  Covering {SITE.areasText}.
                 </p>
               </div>
             </motion.div>

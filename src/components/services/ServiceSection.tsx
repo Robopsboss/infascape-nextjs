@@ -84,7 +84,7 @@ const ServiceSection = ({ heading, content, images, imageAlts, reverse = false, 
                 href={href}
                 className="inline-flex items-center gap-1.5 font-semibold text-highlight hover:gap-2.5 transition-all"
               >
-                {linkLabel ?? "Prices & details"} <ArrowRight size={16} />
+                {linkLabel ?? "Full details"} <ArrowRight size={16} />
               </Link>
             )}
             <div>

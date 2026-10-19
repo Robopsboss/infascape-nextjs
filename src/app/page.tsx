@@ -9,7 +9,7 @@ import FinalCTA from "@/components/home/FinalCTA";
 export const metadata: Metadata = pageMetadata({
   title: "Landscapers in Sheffield | Driveways, Patios, Fencing | Infascape",
   description:
-    "Sheffield landscaping and groundworks company. Tarmac driveways, porcelain patios, artificial grass, fencing and decking built on proper foundations to last 10+ years. Guide prices online.",
+    "Sheffield landscaping and groundworks company. Tarmac driveways, porcelain patios, artificial grass, fencing and decking built on proper foundations to last 10+ years. Covering Sheffield and surrounding areas.",
   path: "/",
 });
 

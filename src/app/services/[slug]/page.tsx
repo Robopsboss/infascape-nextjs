@@ -65,11 +65,6 @@ export default function ServicePage({ params }: Props) {
               <p className="text-primary-foreground/80 text-base sm:text-lg leading-relaxed mb-6">
                 {service.answer}
               </p>
-              <div className="inline-flex flex-col rounded-lg bg-primary-foreground/5 border border-primary-foreground/10 px-5 py-4">
-                <span className="text-xs uppercase tracking-wider text-primary-foreground/50">Guide price</span>
-                <span className="font-heading text-xl font-extrabold text-highlight">{service.price.rate}</span>
-                <span className="text-sm text-primary-foreground/70">{service.price.typical}</span>
-              </div>
             </div>
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <Image
@@ -135,40 +130,40 @@ export default function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Price guide */}
+      {/* Cost */}
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
-            How much does it cost?
+            What affects the cost?
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            {service.price.typical}. Guide rate {service.price.rate}, including
-            materials, labour and waste removal. Your written quote confirms the
-            final price after a site visit.
+            No two jobs are the same, so we price every one from a site visit.
+            You get a written quote that shows what is being built and how, not
+            just a total. These are the things that change the price:
           </p>
-          {service.price.rows && (
-            <table className="w-full text-left text-sm mb-6 border border-border rounded-lg overflow-hidden">
-              <tbody>
-                {service.price.rows.map((r) => (
-                  <tr key={r.label} className="border-b border-border last:border-0">
-                    <th scope="row" className="font-medium text-foreground p-3">{r.label}</th>
-                    <td className="p-3 text-foreground font-semibold whitespace-nowrap">{r.price}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-          <h3 className="font-heading font-bold text-foreground mb-3">What changes the price</h3>
           <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
-            {service.price.drivers.map((d) => (
+            {service.costFactors.map((d) => (
               <li key={d}>{d}</li>
             ))}
           </ul>
-          <p className="mt-6">
-            <Link href="/pricing" className="font-semibold text-highlight hover:underline">
-              See all our prices
-            </Link>
-          </p>
+          {service.examples.length > 0 && (
+            <>
+              <h3 className="font-heading text-xl font-bold text-foreground mt-10 mb-4">
+                Recent jobs and what they cost
+              </h3>
+              <div className="space-y-4">
+                {service.examples.map((ex) => (
+                  <div key={ex.title} className="rounded-lg border border-border p-5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                      <h4 className="font-heading font-bold text-foreground">{ex.title}</h4>
+                      <span className="font-heading font-extrabold text-highlight">{ex.price}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{ex.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
