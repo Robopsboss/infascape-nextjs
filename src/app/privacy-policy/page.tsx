@@ -57,7 +57,8 @@ const sections: { heading: string; body: (string | string[])[] }[] = [
   {
     heading: "Our lawful basis",
     body: [
-      "We use your information because it is necessary to take steps at your request before entering into a contract (giving you a quote) and to perform that contract (doing the work). We keep financial records because the law requires it. Where we ask for your consent for anything else, you can withdraw it at any time.",
+      "We use your information because it is necessary to take steps at your request before entering into a contract (giving you a quote) and to perform that contract (doing the work). We keep financial records because the law requires it.",
+      "Our quote request form also asks you to confirm you're happy for Infascape Ltd to collect and process your details as described in this policy. You can ask us to stop using or delete your information at any time, except where we have to keep records by law.",
     ],
   },
   {
