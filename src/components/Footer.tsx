@@ -7,6 +7,7 @@ const pages = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Our Work", path: "/our-work" },
+  { label: "Reviews", path: "/reviews" },
   { label: "How We Work", path: "/how-we-work" },
   { label: "Guides", path: "/guides" },
   { label: "FAQs", path: "/faq" },

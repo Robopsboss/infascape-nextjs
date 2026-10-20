@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Mail, Phone, ThumbsUp } from "lucide-react";
+import Link from "next/link";
+import { Mail, Phone, Star } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
@@ -91,27 +92,26 @@ const ContactContent = () => {
                   What Our Customers Say
                 </h2>
 
-                <div className="flex items-center gap-2 mb-3">
-                  <ThumbsUp className="w-5 h-5 text-highlight" />
-                  <span className="text-sm font-semibold text-foreground">
-                    100% recommend on Facebook
-                  </span>
+                <div className="flex items-center gap-1 mb-3">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-highlight text-highlight" />
+                  ))}
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  Every one of our Facebook reviewers recommends us. Read
-                  what they say about the work and how we ran the job.
+                <blockquote className="text-sm text-foreground leading-relaxed mb-2">
+                  &ldquo;From start to finish I knew what was happening and
+                  constantly kept in the loop of updates.&rdquo;
+                </blockquote>
+                <p className="text-xs text-muted-foreground mb-6">
+                  Joe McArdle, driveway widening · Google review
                 </p>
 
-                <a
-                  href={SITE.facebookReviewsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/reviews"
                   className="inline-flex items-center gap-2 text-sm font-medium text-highlight hover:underline"
                 >
-                  <Facebook size={16} />
-                  Read all reviews on Facebook
-                </a>
+                  Read our reviews
+                </Link>
               </div>
             </motion.aside>
           </div>
