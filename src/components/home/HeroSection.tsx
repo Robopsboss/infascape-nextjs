@@ -31,11 +31,11 @@ const HeroSection = () => {
           className="max-w-2xl"
         >
           <p className="text-sm font-semibold uppercase tracking-wider text-highlight mb-4">
-            Landscapers &amp; driveway installers in Sheffield
+            Engineering, not guesswork
           </p>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] text-primary-foreground mb-6">
-            Transform Your Outdoor Space With{" "}
-            <span className="text-highlight">Engineering, Not Guesswork.</span>
+            Driveways, Patios and Gardens in Sheffield,{" "}
+            <span className="text-highlight">Built on Proper Foundations.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-primary-foreground/70 leading-relaxed mb-8 max-w-xl">

@@ -2,15 +2,14 @@ import { SITE, absoluteUrl } from "./site";
 import { SERVICES, type FAQ, type Service } from "./services";
 
 export const BUSINESS_ID = `${SITE.url}/#business`;
-export const FOUNDER_ID = `${SITE.url}/about#rob-france`;
+export const FOUNDER_ID = `${SITE.url}/author/rob-france#person`;
 
 const sameAs = [SITE.facebookUrl, SITE.googleBusinessProfileUrl].filter(Boolean);
 
-const areaServed = SITE.areasServed.map((name, i) =>
-  i === 0
-    ? { "@type": "City", name }
-    : { "@type": "AdministrativeArea", name }
-);
+const areaServed = [
+  ...SITE.towns.map((t) => ({ "@type": "Place", name: `${t.name}, ${SITE.region}` })),
+  { "@type": "AdministrativeArea", name: SITE.region },
+];
 
 /** Sitewide business entity. Rendered once, in the root layout. */
 export const businessSchema = {
@@ -75,8 +74,35 @@ export const founderSchema = {
     "Fencing",
     "Composite decking",
   ],
-  url: absoluteUrl("/about"),
+  url: absoluteUrl("/author/rob-france"),
+  image: absoluteUrl(SITE.founderPhoto),
+  sameAs: ["https://opsdeck.co.uk/author/rob-france"],
+  description: `Founder of Infascape Ltd. ${SITE.yearsInTrades} years working in the trades as a groundworker, joiner, landscaper and tarmacker.`,
 };
+
+/** Article schema for guides, with Rob as author. */
+export const articleSchema = (a: {
+  slug: string;
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  image: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${absoluteUrl(`/guides/${a.slug}`)}#article`,
+  headline: a.title,
+  description: a.description,
+  url: absoluteUrl(`/guides/${a.slug}`),
+  image: absoluteUrl(a.image),
+  datePublished: a.datePublished,
+  dateModified: a.dateModified,
+  inLanguage: "en-GB",
+  author: { "@id": FOUNDER_ID },
+  publisher: { "@id": BUSINESS_ID },
+  mainEntityOfPage: absoluteUrl(`/guides/${a.slug}`),
+});
 
 export const breadcrumbSchema = (items: { name: string; path: string }[]) => ({
   "@context": "https://schema.org",

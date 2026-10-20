@@ -7,6 +7,10 @@ const pages = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Our Work", path: "/our-work" },
+  { label: "How We Work", path: "/how-we-work" },
+  { label: "Guides", path: "/guides" },
+  { label: "FAQs", path: "/faq" },
+  { label: "Areas We Cover", path: "/areas" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
@@ -84,14 +88,19 @@ const Footer = () => {
             <p className="mt-4 text-sm text-primary-foreground/40">
               {SITE.legalName}
               <br />
-              Covering {SITE.areasText}
+              <Link href="/areas" className="hover:text-primary-foreground">
+                Covering {SITE.areasText}
+              </Link>
             </p>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center">
           <p className="text-xs text-primary-foreground/40">
-            © {new Date().getFullYear()} {SITE.legalName}. All rights reserved.
+            © {new Date().getFullYear()} {SITE.legalName}. All rights reserved. ·{" "}
+            <Link href="/privacy-policy" className="hover:text-primary-foreground">
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </div>

@@ -8,6 +8,7 @@ import FAQList from "@/components/seo/FAQList";
 import PageCTA from "@/components/seo/PageCTA";
 import { pageMetadata } from "@/lib/metadata";
 import { SERVICES, getService } from "@/lib/services";
+import { GUIDES } from "@/lib/guides";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
 type Props = { params: { slug: string } };
@@ -34,6 +35,7 @@ export default function ServicePage({ params }: Props) {
   if (!service) notFound();
 
   const others = SERVICES.filter((s) => s.slug !== service.slug);
+  const guides = GUIDES.filter((g) => g.services.includes(service.slug));
 
   return (
     <main className="pt-16 sm:pt-18">
@@ -201,6 +203,20 @@ export default function ServicePage({ params }: Props) {
       {/* Other services */}
       <section className="px-4 sm:px-6 lg:px-8 pb-16 bg-background">
         <div className="container-narrow mx-auto max-w-3xl">
+          {guides.length > 0 && (
+            <div className="mb-8">
+              <h2 className="font-heading font-bold text-foreground mb-3">Helpful guides</h2>
+              <ul className="space-y-2">
+                {guides.map((g) => (
+                  <li key={g.slug}>
+                    <Link href={`/guides/${g.slug}`} className="font-semibold text-highlight hover:underline">
+                      {g.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <h2 className="font-heading font-bold text-foreground mb-3">Other services</h2>
           <ul className="flex flex-wrap gap-2">
             {others.map((s) => (
