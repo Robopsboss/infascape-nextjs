@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/faq", 0.8),
     page("/how-we-work", 0.7),
     page("/areas", 0.8),
+    page("/reviews", 0.8),
     page("/our-work", 0.7),
     page("/about", 0.7, "yearly"),
     page("/author/rob-france", 0.6, "yearly"),

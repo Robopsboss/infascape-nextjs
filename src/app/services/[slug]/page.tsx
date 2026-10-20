@@ -9,6 +9,8 @@ import PageCTA from "@/components/seo/PageCTA";
 import { pageMetadata } from "@/lib/metadata";
 import { SERVICES, getService } from "@/lib/services";
 import { GUIDES } from "@/lib/guides";
+import { reviewsForService } from "@/lib/reviews";
+import ReviewCard from "@/components/seo/ReviewCard";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
 type Props = { params: { slug: string } };
@@ -36,6 +38,7 @@ export default function ServicePage({ params }: Props) {
 
   const others = SERVICES.filter((s) => s.slug !== service.slug);
   const guides = GUIDES.filter((g) => g.services.includes(service.slug));
+  const reviews = reviewsForService(service.slug).slice(0, 2);
 
   return (
     <main className="pt-16 sm:pt-18">
@@ -189,6 +192,26 @@ export default function ServicePage({ params }: Props) {
           </p>
         </div>
       </section>
+
+      {reviews.length > 0 && (
+        <section className="section-padding bg-background">
+          <div className="container-narrow mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-8 text-center">
+              What customers say
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {reviews.map((r) => (
+                <ReviewCard key={r.author + r.date} review={r} />
+              ))}
+            </div>
+            <p className="text-center mt-6">
+              <Link href="/reviews" className="font-semibold text-highlight hover:underline">
+                Read all reviews
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="section-padding bg-background">
