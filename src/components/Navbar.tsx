@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Our Work", path: "/our-work" },
+  { label: "Guides", path: "/guides" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
@@ -35,7 +36,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -64,7 +65,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile: call + toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="lg:hidden flex items-center gap-4">
         <a
           href={`tel:${SITE.phone}`}
           aria-label={`Call ${SITE.phoneDisplay}`}
@@ -84,7 +85,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-primary border-t border-primary-foreground/10">
+        <div className="lg:hidden bg-primary border-t border-primary-foreground/10">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link

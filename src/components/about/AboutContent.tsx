@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Building2, Lightbulb, Infinity } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const fadeUp = {
@@ -196,9 +197,9 @@ const AboutContent = () => {
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-6">
               Infascape is run by Rob France. Rob has worked in the trades for
-              over 20 years: building sites, new builds, a tarmac company, and
-              landscaping and joinery. He started his own business in 2020 and
-              founded Infascape Ltd in 2022.
+              24 years: on building sites and new builds, as a joiner, as a
+              landscaper and for a tarmac company. He founded Infascape Ltd in
+              2022.
             </p>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               Working for other firms is where Rob saw what fails and why
@@ -211,6 +212,11 @@ const AboutContent = () => {
               the job. Every project, from garden borders to full driveways,
               gets the same methodical attention to detail, and is built to
               last a decade, not to need callbacks in three years.
+            </p>
+            <p className="mt-8">
+              <Link href="/author/rob-france" className="font-semibold text-highlight hover:underline">
+                More about Rob
+              </Link>
             </p>
           </motion.div>
         </div>
