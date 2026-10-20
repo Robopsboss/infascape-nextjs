@@ -138,33 +138,7 @@ export const serviceSchema = (s: Service) => ({
   areaServed,
 });
 
-/** Business entity with reviews (and rating, once the Google totals are set). */
-export const reviewsSchema = (
-  reviews: { author: string; date: string; rating: number; text: string }[],
-  summary: { googleRating: number | null; googleReviewCount: number | null }
-) => ({
-  "@context": "https://schema.org",
-  "@type": ["LandscapingBusiness", "HomeAndConstructionBusiness"],
-  "@id": BUSINESS_ID,
-  name: SITE.legalName,
-  url: SITE.url,
-  ...(summary.googleRating && summary.googleReviewCount
-    ? {
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: summary.googleRating,
-          reviewCount: summary.googleReviewCount,
-          bestRating: 5,
-          worstRating: 1,
-        },
-      }
-    : {}),
-  review: reviews.map((r) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: r.author },
-    datePublished: r.date,
-    reviewBody: r.text,
-    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5, worstRating: 1 },
-    publisher: { "@type": "Organization", name: "Google" },
-  })),
-});
+
+// No Review / AggregateRating markup: Google treats reviews a business
+// publishes about itself as self-serving and flags them as errors. Reviews
+// stay on the page as plain text, which search and AI tools still read.

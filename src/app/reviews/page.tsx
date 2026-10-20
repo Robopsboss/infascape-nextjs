@@ -8,7 +8,7 @@ import ReviewCard from "@/components/seo/ReviewCard";
 import { pageMetadata } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 import { REVIEWS, REVIEW_SUMMARY, REVIEW_THEMES, formatReviewDate } from "@/lib/reviews";
-import { breadcrumbSchema, faqSchema, reviewsSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import type { FAQ } from "@/lib/services";
 
 const { googleRating, googleReviewCount } = REVIEW_SUMMARY;
@@ -51,13 +51,7 @@ const faqs: FAQ[] = [
 export default function ReviewsPage() {
   return (
     <main className="pt-16 sm:pt-18">
-      <JsonLd
-        data={[
-          reviewsSchema(REVIEWS, REVIEW_SUMMARY),
-          faqSchema(faqs),
-          breadcrumbSchema(crumbs),
-        ]}
-      />
+      <JsonLd data={[faqSchema(faqs), breadcrumbSchema(crumbs)]} />
       <PageHeader crumbs={crumbs} title="Customer Reviews" intro={summaryLine}>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
