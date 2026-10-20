@@ -19,8 +19,8 @@ export type Review = {
 export const REVIEW_SUMMARY = {
   // Fill these in from the Google Business Profile. The summary and
   // AggregateRating schema only show once both are set.
-  googleRating: null as number | null,
-  googleReviewCount: null as number | null,
+  googleRating: 5.0 as number | null,
+  googleReviewCount: 13 as number | null,
   facebookRecommendCount: 16,
   facebookRecommendPercent: 100,
   lastUpdated: "2026-10-20",
